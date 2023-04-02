@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    /** Opens "Database" Page
+     @param View - Pass in the view
+     @returns - void
+     **/
     private void onLoginClick(View view) {
         Intent intent = new Intent(this, Database.class);
         startActivity(intent);
