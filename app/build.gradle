@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.module_three.inventoryapp'
+    namespace 'com.CS_370.inventoryapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.module_three.inventoryapp"
+        applicationId "com.CS_370.inventoryapp"
         minSdk 28
         targetSdk 33
         versionCode 1

@@ -1,4 +1,4 @@
-package com.module_three.inventoryapp;
+package com.CS_370.inventoryapp;
 
 import org.junit.Test;
 

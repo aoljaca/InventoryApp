@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="89dp"
+        android:layout_height="58dp"
+        android:text="Add Item"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="6dp" />
+
+    <GridLayout
+        android:id="@+id/inventoryGridTwo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="3"
+            android:layout_gravity="center_horizontal"
+            android:text="Inventory Items"
+            android:textSize="26sp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/arrow_up_float" />
+
+        <Button
+            android:id="@+id/button_delete_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:text="Delete Item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/arrow_down_float" />
+    </GridLayout>
+
+</LinearLayout>
+

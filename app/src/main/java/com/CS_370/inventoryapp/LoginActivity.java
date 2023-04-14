@@ -1,4 +1,4 @@
-package com.module_three.inventoryapp;
+package com.CS_370.inventoryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,8 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button loginButton;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         // grab instance of nameText
         username = findViewById(R.id.username);
@@ -42,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
      @returns - void
      **/
     private void onLoginClick(View view) {
-        Intent intent = new Intent(this, Database.class);
-        startActivity(intent);
+        String usernameValue = username.getText().toString();
+        String passwordValue = password.getText().toString();
+        if (Database.getInstance(getApplicationContext()).authenticate(usernameValue, passwordValue)) {
+            Intent intent = new Intent(this, Inventory.class);
+            startActivity(intent);
+        }
+
     }
 }
