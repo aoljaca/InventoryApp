@@ -24,9 +24,10 @@ public class Item {
     public String getDescription() {return description;};
 
     public void setDescription(String description) {this.description = description;}
-    public Item(long id, String name, String description) {
+    public Item(long id, String name, String description, String username) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.username = username;
     }
 }

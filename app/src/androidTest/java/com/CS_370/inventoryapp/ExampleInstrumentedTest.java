@@ -21,6 +21,17 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.module_three.inventoryapp", appContext.getPackageName());
+        assertEquals("com.CS_370.inventoryapp", appContext.getPackageName());
+        Item vase = new Item(1, "Vase", "Glass Vase", "aoljaca");
+        long itemId = InventoryDatabase.getInstance(appContext).addItem(vase);
+        assertTrue(itemId != -1);
+        assertTrue(InventoryDatabase.getInstance(appContext).getItems().size() > 0);
+
+        Item updatedVase = new Item(itemId, "Vase", "Ceramic Vase", "aoljaca");
+        boolean updated = InventoryDatabase.getInstance(appContext).editItem(itemId, updatedVase);
+        assertTrue(updated);
+
+        boolean deleted = InventoryDatabase.getInstance(appContext).deleteItem(itemId);
+        assertTrue(deleted);
     }
 }

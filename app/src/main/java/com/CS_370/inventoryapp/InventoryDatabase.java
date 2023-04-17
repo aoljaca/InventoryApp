@@ -51,7 +51,7 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         db.execSQL("drop table if exists " + InventoryTable.TABLE);
     }
 
-    public List<Item> getItems(long itemId) {
+    public List<Item> getItems() {
         List<Item> items = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         String sql = "SELECT * FROM " + InventoryTable.TABLE;
@@ -61,7 +61,8 @@ public class InventoryDatabase extends SQLiteOpenHelper {
                 long id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String description = cursor.getString(2);
-                Item item = new Item(id, name, description);
+                String username = cursor.getString(3);
+                Item item = new Item(id, name, description, username);
                 items.add(item);
             } while (cursor.moveToNext());
         }
@@ -76,7 +77,8 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             String name = cursor.getString(1);
             String description = cursor.getString(2);
-            item = new Item(itemId, name, description);
+            String username = cursor.getString(3);
+            item = new Item(itemId, name, description, username);
         }
         return item;
     }
@@ -86,6 +88,7 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(InventoryTable.COL_NAME, item.getName());
         values.put(InventoryTable.COL_DESCRIPTION, item.getDescription());
+        values.put(InventoryTable.COL_USERNAME, item.getUsername());
         long newId = db.insert(InventoryTable.TABLE, null, values);
         return newId;
     }
@@ -98,7 +101,7 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         values.put(InventoryTable.COL_NAME, item.getName());
         values.put(InventoryTable.COL_DESCRIPTION, item.getDescription());
         values.put(InventoryTable.COL_USERNAME, item.getUsername());
-        long result = db.update(InventoryTable.TABLE, values, InventoryTable.COL_ID + " = " + id + InventoryTable.COL_USERNAME + " = " + item.getUsername(), null);
+        long result = db.update(InventoryTable.TABLE, values, InventoryTable.COL_ID + " = " + id + " AND " + InventoryTable.COL_USERNAME + " = '" + item.getUsername()+"'", null);
         return result == 1;
     }
 
