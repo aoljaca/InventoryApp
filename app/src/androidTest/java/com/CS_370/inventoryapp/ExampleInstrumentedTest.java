@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+
+    private final Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -33,5 +35,35 @@ public class ExampleInstrumentedTest {
 
         boolean deleted = InventoryDatabase.getInstance(appContext).deleteItem(itemId);
         assertTrue(deleted);
+    }
+
+    @Test
+    public void testSharedPref() {
+        boolean exceptionThrown = false;
+        try {
+            NotificationManager.getInstance();
+        } catch (IllegalStateException ex) {
+            exceptionThrown = true;
+        }
+        assertTrue(exceptionThrown);
+        exceptionThrown = false;
+        try {
+            final String username = "aoljaca";
+            NotificationManager.initialize(appContext, username);
+            NotificationManager.getInstance();
+        } catch (IllegalStateException ex) {
+            exceptionThrown = true;
+        }
+        assertFalse(exceptionThrown);
+
+        assertFalse(NotificationManager.getInstance().getNotificationPreference());
+        NotificationManager.getInstance().saveNotificationPreference(true);
+        assertTrue(NotificationManager.getInstance().getNotificationPreference());
+        NotificationManager.getInstance().saveNotificationPreference(false);
+        assertFalse(NotificationManager.getInstance().getNotificationPreference());
+        //NotificationManager.getInstance().removeNotificationPreference();
+        //assertFalse(NotificationManager.getInstance().getNotificationPreference());
+
+
     }
 }

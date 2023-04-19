@@ -14,25 +14,25 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button loginButton;
     private Button registerButton;
-    private Button createAccountButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // grab instance of nameText
         username = findViewById(R.id.username);
-        // grab instance of textGreeting
         password = findViewById(R.id.password);
         password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        // grab instance of say hello button
         loginButton = findViewById(R.id.loginButton);
         registerButton = findViewById(R.id.registerButton);
-        createAccountButton = findViewById(R.id.createAccountButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onLoginClick(v);
+            }
+        });
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onRegisterClick(v);
             }
         });
     }
@@ -48,5 +48,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+
+    private void onRegisterClick(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 }
