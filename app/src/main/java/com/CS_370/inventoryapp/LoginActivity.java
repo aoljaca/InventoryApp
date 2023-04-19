@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    /** Opens "Database" Page
+    /** Login Function
      @param View - Pass in the view
      @returns - void
      **/

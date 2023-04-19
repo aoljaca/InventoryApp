@@ -36,4 +36,12 @@
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="6dp" />
 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="120dp"
+        android:layout_height="58dp"
+        android:text="Back To Login"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="6dp" />
+
 </LinearLayout>

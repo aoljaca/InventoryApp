@@ -17,6 +17,17 @@
         tools:layout_editor_absoluteX="7dp"
         tools:layout_editor_absoluteY="87dp" />
 
+    <EditText
+        android:id="@+id/itemDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="93dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:hint="Item Description"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="87dp" />
+
     <Button
         android:id="@+id/addItemButton"
         android:layout_width="89dp"

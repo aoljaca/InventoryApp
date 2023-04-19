@@ -50,7 +50,10 @@ public class InventoryDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + InventoryTable.TABLE);
     }
-
+    /** Get Items Function
+     @param void
+     @returns - List<Item>
+     **/
     public List<Item> getItems() {
         List<Item> items = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
@@ -68,7 +71,10 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         }
         return items;
     }
-
+    /** Get Item Function
+     @param itemId - Pass in itemId
+     @returns - Item
+     **/
     public Item getItem(long itemId) {
         Item item = null;
         SQLiteDatabase db = getReadableDatabase();
@@ -82,7 +88,10 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         }
         return item;
     }
-
+    /** Add Item Function
+     @param Item - Pass in the item
+     @returns - long
+     **/
     public long addItem(Item item) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -92,7 +101,10 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         long newId = db.insert(InventoryTable.TABLE, null, values);
         return newId;
     }
-
+    /** Edit Item Function
+     @param id, item - Pass in the item and item id
+     @returns - boolean
+     **/
     public boolean editItem(long id, Item item) {
         boolean isEdited = false;
         SQLiteDatabase db = getWritableDatabase();
@@ -104,7 +116,10 @@ public class InventoryDatabase extends SQLiteOpenHelper {
         long result = db.update(InventoryTable.TABLE, values, InventoryTable.COL_ID + " = " + id + " AND " + InventoryTable.COL_USERNAME + " = '" + item.getUsername()+"'", null);
         return result == 1;
     }
-
+    /** Delete Function
+     @param id - Pass in the itemId
+     @returns - void
+     **/
     public boolean deleteItem(long id) {
         SQLiteDatabase db = getWritableDatabase();
         int result = db.delete(InventoryTable.TABLE, InventoryTable.COL_ID + " = " + id, null);
